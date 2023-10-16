@@ -1,0 +1,26 @@
+diff --git a/SPECS/jctools.spec b/SPECS/jctools.spec
+index bc246a1..ca87f70 100644
+--- a/SPECS/jctools.spec
++++ b/SPECS/jctools.spec
+@@ -16,6 +16,12 @@ BuildRequires:  mvn(com.google.guava:guava-testlib)
+ BuildRequires:  mvn(junit:junit)
+ BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+ BuildRequires:  mvn(org.hamcrest:hamcrest-all)
++AutoReqProv:    no
++Requires:       (java-headless or java-11-headless)
++Requires:       javapackages-filesystem
++Provides:       mvn(org.jctools:jctools-core) = 3.3.0
++Provides:       mvn(org.jctools:jctools-core:pom:) = 3.3.0
++Provides:       osgi(org.jctools.core) = 3.3.0
+ 
+ # unused parent package was removed for fedora 33+
+ Obsoletes:      %{name}-parent < 3.1.0-1
+@@ -41,6 +47,8 @@ currently missing from the JDK:
+ 
+ %package javadoc
+ Summary:        Javadoc for %{name}
++AutoReqProv:    no
++Requires:       javapackages-filesystem
+ 
+ %description javadoc
+ This package contains javadoc for %{name}.
